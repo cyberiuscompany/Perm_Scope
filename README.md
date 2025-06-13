@@ -53,6 +53,29 @@ PermScope es una herramienta híbrida que permite el análisis de configuracione
   - perm_scope.py
   - README.md
 
+## 🖼️ Vista de la herramienta
+
+<table>
+  <tr>
+    <td><strong>Modo GUI (Claro)</strong></td>
+    <td><strong>Modo GUI (Oscuro)</strong></td>
+  </tr>
+  <tr>
+    <td><img src="Foto Gui Modo Claro.png" alt="Modo claro" width="1020"/></td>
+    <td><img src="Foto Gui Modo Oscuro.png" alt="Modo oscuro" width="1020"/></td>
+  </tr>
+</table>
+
+---
+
+---
+
+## 🖥️ Vista CLI
+
+<img src="Foto CLI.png" alt="CLI PermScope" width="1000"/>
+
+---
+
 # 🕵️ Uso de PermScope
 
 ```bash
@@ -65,5 +88,3 @@ python perm_scope.py --modo consola --tipo comunes
 python perm_scope.py --modo consola --tipo windows
 python perm_scope.py --modo consola --tipo linux
 ```
-
-
