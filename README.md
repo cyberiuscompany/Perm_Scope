@@ -103,3 +103,10 @@ python perm_scope.py
 ```
 
 ### 2. Instalación profesional como paquete
+
+```bash
+git clone https://github.com/cyberiuscompany/PermScope.git
+cd PermScope
+pip install .
+perm_scope --help
+```
