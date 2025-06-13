@@ -129,7 +129,7 @@ Si te falla usa esta alternativas:
 
 ```bash
 Aquí he bajado a una versión de Python más estable dado que el
-compilador "PyInstaller" suele fallar con cada versión nueva de pyton
+compilador "PyInstaller" suele fallar con cada versión nueva de python
 
 pip install pyenv
 python3.10 -m venv venv
