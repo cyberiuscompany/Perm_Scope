@@ -110,3 +110,22 @@ cd PermScope
 pip install .
 perm_scope --help
 ```
+
+### 3. Compilación a formato `.exe`
+
+Si deseas generar un archivo ejecutable (`.exe`) de **Perm_Scope**  
+con su icono personalizado sigue estos pasos:
+
+Esto generará el archivo ejecutable dentro de la carpeta:
+
+```
+dist/Perm_Scope/Perm_Scope.exe
+```
+
+#### Pasos:
+
+```bash
+cd Perm_Scope
+pip install pyinstaller
+pyinstaller CyberiusUnzipCracker.spec
+```
