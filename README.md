@@ -88,3 +88,18 @@ python perm_scope.py --modo consola --tipo comunes
 python perm_scope.py --modo consola --tipo windows
 python perm_scope.py --modo consola --tipo linux
 ```
+
+## ⚙️ Instalación
+
+### 1. Clonar o descargar el repositorio
+
+Puedes clonar o descargar este proyecto y usarlo directamente con Python:
+
+```bash
+git clone https://github.com/cyberiuscompany/PermScope.git
+cd PermScope
+pip install -r requirements.txt
+python perm_scope.py
+```
+
+### 2. Instalación profesional como paquete
