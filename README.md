@@ -135,6 +135,10 @@ python3.10 -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 pip install pyinstaller
+git clone https://github.com/cyberiuscompany/PermScope.git
+cd perm_scope
+pip install pyinstaller
+pyinstaller perm_scope.spec
 ```
 
 
