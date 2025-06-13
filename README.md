@@ -131,6 +131,7 @@ Si te falla usa esta alternativas:
 Aquí he bajado a una versión de Python más estable dado que el
 compilador "PyInstaller" suele fallar con cada versión nueva de pyton
 
+pip install pyenv
 python3.10 -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
