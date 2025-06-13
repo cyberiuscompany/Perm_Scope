@@ -124,5 +124,5 @@ Esto generará el archivo ejecutable dentro de la carpeta:
 git clone https://github.com/cyberiuscompany/PermScope.git
 cd perm_scope
 pip install pyinstaller
-pyinstaller CyberiusUnzipCracker.spec
+pyinstaller perm_scope.spec
 ```
