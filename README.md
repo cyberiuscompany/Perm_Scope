@@ -118,8 +118,6 @@ Si deseas generar un archivo ejecutable (`.exe`) de **Perm_Scope**  con su icono
 Esto generará el archivo ejecutable dentro de la carpeta:
 - dist/perm_scope/perm_scope.exe
 
-#### Pasos:
-
 ```bash
 git clone https://github.com/cyberiuscompany/PermScope.git
 cd perm_scope
