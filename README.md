@@ -124,3 +124,19 @@ cd perm_scope
 pip install pyinstaller
 pyinstaller perm_scope.spec
 ```
+
+Si te falla usa esta alternativas:
+
+```bash
+Aquí he bajado a una versión de Python más estable dado que el
+compilador "PyInstaller" suele fallar con cada versión nueva de pyton
+
+python3.10 -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+pip install pyinstaller
+```
+
+
+
+
