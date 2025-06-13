@@ -53,7 +53,13 @@ PermScope es una herramienta híbrida que permite el análisis de configuracione
   - perm_scope.py
   - README.md
 
-## 🖼️ Vista de la herramienta
+## 🎥 Demostración
+
+<p align="center">
+  <img src="docs/perm_scope.gif" width="1200" alt="Demostración de Perm_Scope">
+</p>
+
+## 🖼️ Vista de la herramienta en GUI
 
 <table>
   <tr>
