@@ -28,3 +28,6 @@ def ejecutar():
     import subprocess
     resultado = subprocess.getoutput("netsh advfirewall firewall show rule name=all")
     return "[+] Reglas del firewall:\n" + resultado
+
+# Si quieres añade una linea de crédito en tu módulo al final 
+# Autor: @tu_usuario (GitHub)
