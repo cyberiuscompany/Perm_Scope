@@ -118,13 +118,12 @@ con su icono personalizado sigue estos pasos:
 
 Esto generará el archivo ejecutable dentro de la carpeta:
 
-```
-dist/Perm_Scope/Perm_Scope.exe
-```
+- dist/Perm_Scope/Perm_Scope.exe
 
 #### Pasos:
 
 ```bash
+git clone https://github.com/cyberiuscompany/PermScope.git
 cd Perm_Scope
 pip install pyinstaller
 pyinstaller CyberiusUnzipCracker.spec
