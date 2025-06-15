@@ -117,36 +117,6 @@ pip install .
 perm_scope --help
 ```
 
-### 3. Compilación a formato `.exe`
-
-Si deseas generar un archivo ejecutable (`.exe`) de **Perm_Scope**  con su icono personalizado sigue estos pasos:
-
-Esto generará el archivo ejecutable dentro de la carpeta:
-- \dist\PermScope.exe
-
-```bash
-git clone https://github.com/cyberiuscompany/PermScope.git
-cd perm_scope
-pip install pyinstaller
-pyinstaller perm_scope.spec
-```
-
-Si te falla usa esta alternativas:
-
-```bash
-Aquí he bajado a una versión de Python más estable dado que el
-compilador "PyInstaller" suele fallar con cada versión nueva de python
-
-pip install pyenv
-python3.10 -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-pip install pyinstaller
-git clone https://github.com/cyberiuscompany/PermScope.git
-cd perm_scope
-pip install pyinstaller
-pyinstaller perm_scope.spec
-```
 
 
 
