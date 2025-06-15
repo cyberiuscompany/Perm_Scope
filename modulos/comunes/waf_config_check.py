@@ -1,6 +1,9 @@
+# modulos/firewall_check.py
 import subprocess
 import platform
 import os
+import re
+from colorama import Fore, Style
 
 def ejecutar():
     resultado = []
@@ -11,6 +14,27 @@ def ejecutar():
         try:
             salida = subprocess.check_output('netsh advfirewall show allprofiles', shell=True, text=True)
             resultado.append(salida)
+
+            # Extraer estados de cada perfil
+            perfiles = {
+                "Domain": "Desconocido",
+                "Private": "Desconocido",
+                "Public": "Desconocido"
+            }
+
+            for perfil in perfiles.keys():
+                patron = rf"{perfil} Profile Settings:\s*-+\s*State\s+(ON|OFF)"
+                match = re.search(patron, salida, re.IGNORECASE | re.DOTALL)
+                if match:
+                    estado = match.group(1).upper()
+                    perfiles[perfil] = estado
+
+            # Resumen
+            resultado.append("\n📋 Resumen del estado del firewall por perfil:")
+            for perfil, estado in perfiles.items():
+                color = Fore.GREEN if estado == "ON" else Fore.RED
+                resultado.append(f"  🔹 {perfil} Profile: {color}{estado}{Style.RESET_ALL}")
+
         except Exception as e:
             resultado.append(f"[!] Error al obtener la configuración del firewall: {str(e)}")
     
