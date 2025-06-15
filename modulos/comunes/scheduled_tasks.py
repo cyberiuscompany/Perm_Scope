@@ -1,6 +1,6 @@
-# modulos/scheduled_tasks.py
 import platform
 import subprocess
+from collections import defaultdict
 
 
 def ejecutar():
@@ -8,15 +8,36 @@ def ejecutar():
     sistema = platform.system()
 
     if sistema == "Windows":
-        resultado.append("📅 Tareas programadas en Windows:\n")
+        resumen_por_usuario = defaultdict(int)
+
         try:
             salida = subprocess.check_output("schtasks /query /fo LIST /v", shell=True, text=True, stderr=subprocess.DEVNULL)
             tareas = salida.split("\n\n")
+            total_tareas = 0
+
             for tarea in tareas:
                 if "TaskName:" in tarea:
-                    # Añade un salto de línea entre HostName y TaskName para claridad visual
-                    tarea = tarea.replace("TaskName:", "\nTaskName:")
-                    resultado.append(tarea.strip())
+                    lineas = tarea.strip().splitlines()
+                    info = {}
+                    for linea in lineas:
+                        if ":" in linea:
+                            clave, valor = linea.split(":", 1)
+                            clave = clave.strip()
+                            valor = valor.strip()
+                            if "N/A" not in valor:
+                                info[clave] = valor
+
+                    if "TaskName" in info:
+                        raw_user = info.get("Run As User", "Desconocido")
+                        usuario = raw_user.split("\\")[-1] if "\\" in raw_user else raw_user
+                        resumen_por_usuario[usuario] += 1
+                        total_tareas += 1
+
+            resultado.append(f"📋 Total de tareas programadas encontradas: {total_tareas}\n")
+            resultado.append("📊 Resumen por usuario que ejecuta tareas:\n")
+            for usuario, cantidad in resumen_por_usuario.items():
+                resultado.append(f"👤 {usuario}: {cantidad} tarea(s)")
+
         except Exception as e:
             resultado.append(f"[!] Error al obtener tareas programadas: {str(e)}")
 

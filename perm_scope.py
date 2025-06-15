@@ -137,7 +137,8 @@ OPCIONES CON --modo consola:
 
     --listar
         Muestra todos los módulos disponibles:
-        🟦 Comunes (Linux & Windows)
+        * (A la hora de escribir el nombre recuerda la "_" en los espacios)
+        🟦 Comunes (Linux & Windows) 
         🟥 Solo Windows
         🟩 Solo Linux
 
@@ -145,7 +146,7 @@ OPCIONES CON --modo consola:
         Ejecuta un módulo exacto (sin .py)
         Ej: python perm_scope.py --modo consola --modulo whoami_all
 
-    --modulos N1,N2,...
+    --modulos N1,N2,... (Fijate que los espacio son "_" en cada modulo)
         Ejecuta varios módulos
         Ej: python perm_scope.py --modo consola --modulos whoami_all,users_logged
 

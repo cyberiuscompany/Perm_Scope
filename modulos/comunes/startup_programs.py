@@ -1,7 +1,7 @@
-# modulos/startup_programs.py
 import platform
 import subprocess
 import os
+from collections import OrderedDict
 
 
 def ejecutar():
@@ -12,11 +12,33 @@ def ejecutar():
 
     try:
         if sistema == "Windows":
-            resultado.append("Usando: wmic startup get Caption,Command,Location\n")
-            salida = subprocess.check_output("wmic startup get Caption,Command,Location", shell=True, text=True)
-            resultado.append(salida)
+            resultado.append("🔹 Programas registrados en WMIC:\n")
+            raw = subprocess.check_output("wmic startup get Caption,Command,Location", shell=True, text=True)
+            lineas = raw.strip().splitlines()
+            programas = OrderedDict()
 
-            resultado.append("\nRevisando claves de registro comunes de inicio (solo visual, no escritura):\n")
+            # Detectar posiciones de columnas
+            header = lineas[0]
+            idx_caption = header.find("Caption")
+            idx_command = header.find("Command")
+            idx_location = header.find("Location")
+
+            for linea in lineas[1:]:
+                if not linea.strip():
+                    continue
+                caption = linea[idx_caption:idx_command].strip()
+                command = linea[idx_command:idx_location].strip()
+                location = linea[idx_location:].strip()
+
+                key = f"{caption} | {command}"
+                if key not in programas:
+                    programas[key] = location
+
+            for item, location in programas.items():
+                resultado.append(f"  - {item}")
+
+            # Revisar claves del registro
+            resultado.append("\n🗂️ Revisando claves de registro comunes de inicio (solo visual, no escritura):\n")
             claves = [
                 "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
                 "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"

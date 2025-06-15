@@ -1,50 +1,63 @@
-# modulos/insecure_services.py
 import platform
 import subprocess
 import os
+
 
 def ejecutar():
     resultado = []
     sistema = platform.system()
 
     if sistema == "Windows":
-        resultado.append("🛠️ Servicios en Windows:\n")
+        resultado.append("🛠️ Análisis resumido de servicios en Windows:\n")
+        total = 0
+        inseguros = 0
+
         try:
             servicios = subprocess.check_output(
                 'wmic service get Name,StartMode,State,PathName',
                 shell=True, text=True, stderr=subprocess.DEVNULL
             ).splitlines()
+
             for s in servicios[1:]:
                 parts = s.strip().split(None, 3)
                 if len(parts) == 4:
                     nombre, modo, estado, ruta = parts
+                    total += 1
                     if ' ' in ruta and not ruta.startswith('"'):
-                        resultado.append(f"[!] Servicio: {nombre}\n    Estado: {estado}\n    Modo de inicio: {modo}\n    Ruta: {ruta}\n")
+                        inseguros += 1
+
+            resultado.append(f"🔢 Total de servicios: {total}")
+            resultado.append(f"⚠️ Servicios con ruta potencialmente insegura: {inseguros}")
+            if inseguros > 0:
+                resultado.append("💡 Revisa que las rutas estén entre comillas para evitar hijacking.")
+
         except Exception as e:
             resultado.append(f"[!] Error al listar servicios: {str(e)}")
 
     elif sistema == "Linux":
-        resultado.append("🛠️ Servicios en Linux (systemd):\n")
+        resultado.append("🛠️ Servicios detectados en Linux:\n")
         try:
-            servicios = subprocess.check_output("systemctl list-units --type=service --all", shell=True, text=True)
-            resultado.append(servicios)
+            servicios = subprocess.check_output(
+                "systemctl list-units --type=service --all --no-pager --no-legend",
+                shell=True, text=True
+            ).splitlines()
+            resultado.append(f"🔢 Servicios systemd detectados: {len(servicios)}")
         except Exception as e:
-            resultado.append(f"[!] Error al obtener servicios con systemd: {str(e)}")
+            resultado.append(f"[!] Error al obtener servicios systemd: {str(e)}")
 
-        resultado.append("\n🔍 Servicios en /etc/init.d:\n")
+        resultado.append("\n📁 Ejecutables encontrados en /etc/init.d:")
         try:
+            ejecutables = []
             if os.path.isdir("/etc/init.d"):
-                scripts = os.listdir("/etc/init.d")
-                for s in scripts:
+                for s in os.listdir("/etc/init.d"):
                     path = os.path.join("/etc/init.d", s)
                     if os.access(path, os.X_OK):
-                        resultado.append(f"{s} (ejecutable)")
-            else:
-                resultado.append("No se encontró /etc/init.d")
+                        ejecutables.append(s)
+            resultado.append(f"🔹 Total: {len(ejecutables)}")
         except Exception as e:
             resultado.append(f"[!] Error al listar /etc/init.d: {str(e)}")
 
     else:
-        resultado.append("Sistema no soportado para este análisis.")
+        resultado.append("Sistema operativo no soportado para este módulo.")
 
     return "\n".join(resultado)
