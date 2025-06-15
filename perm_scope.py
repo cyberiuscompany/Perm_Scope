@@ -120,12 +120,6 @@ def modo_consola(args):
 
 def mostrar_ayuda():
     print(Fore.YELLOW + """
-INFO:
-          
-    GitHub   : github.com/cyberiuscompany
-    YouTube  : youtube.com/@CyberiusCompany
-    LinkedIn : linkedin.com/in/marlon-cabrera
-          
 PermScope - Análisis y recolección local
 ----------------------------------------
 
@@ -133,14 +127,19 @@ USO:
     python perm_scope.py --modo gui
     python perm_scope.py --modo consola + [opciones]
 
+COMANDOS MAS POTENTES:
+    python perm_scope.py --modo consola --tipo comunes
+    python perm_scope.py --modo consola --tipo windows
+    python perm_scope.py --modo consola --tipo linux
+
 OPCIONES CON --modo consola:
 
     --listar
         Muestra todos los módulos disponibles:
         * (A la hora de escribir el nombre recuerda la "_" en los espacios)
-        🟦 Comunes (Linux & Windows) 
-        🟥 Solo Windows
-        🟩 Solo Linux
+        🟦 Comunes (Linux & Windows) (Visión General) 
+        🟥 Solo Windows (Ofensivos)
+        🟩 Solo Linux (Ofensives)
 
     --modulo NOMBRE
         Ejecuta un módulo exacto (sin .py)
@@ -312,6 +311,15 @@ def main():
     if args.help or args.modo is None:
         mostrar_banner()
         mostrar_ayuda()
+        
+        # NUEVO: mostrar resumen de módulos al ejecutar sin parámetros
+        cargar_funciones()
+        print(Fore.CYAN + "\n📦 Módulos disponibles detectados:\n")
+        print(Fore.BLUE + f"🟦 Comunes (Revisión General):        {len(FUNCIONES_COMUNES)} módulos")
+        print(Fore.RED + f"🟥 Solo Windows (Ofensivos):   {len(FUNCIONES_WINDOWS)} módulos")
+        print(Fore.GREEN + f"🟩 Solo Linux (Ofensivos):     {len(FUNCIONES_LINUX)} módulos")
+
+        print(Fore.YELLOW + "\nℹ️  Usa '--listar' para ver los nombres completos.\n")
         return
 
     if args.modo == "gui":
@@ -324,6 +332,7 @@ def main():
     elif args.modo == "consola":
         mostrar_banner()
         modo_consola(args)
+
 
 if __name__ == "__main__":
     main()
