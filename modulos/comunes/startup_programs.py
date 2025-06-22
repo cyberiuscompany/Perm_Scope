@@ -49,3 +49,52 @@ def ejecutar():
                     resultado.append(f"\n[{clave}]\n{reg.strip()}\n")
                 except subprocess.CalledProcessError:
                     resultado.append(f"\n[{clave}]\n(No se encontraron entradas o acceso denegado)\n")
+elif sistema == "Linux":
+    resultado.append("🔍 Archivos y servicios de inicio detectados en Linux:\n")
+
+    # Archivos de inicio de usuario
+    archivos = ["~/.bashrc", "~/.profile", "~/.bash_profile"]
+    for archivo in archivos:
+        ruta = os.path.expanduser(archivo)
+        if os.path.exists(ruta):
+            with open(ruta, 'r', errors='ignore') as f:
+                lineas = [line.strip() for line in f.readlines() if line.strip() and not line.startswith("#")]
+            if lineas:
+                resultado.append(f"📄 {archivo}: {len(lineas)} líneas activas\n")
+            else:
+                resultado.append(f"📄 {archivo}: vacío\n")
+        else:
+            resultado.append(f"📄 {archivo}: no existe\n")
+
+    # Carpeta de autostart
+    autostart_dir = os.path.expanduser("~/.config/autostart")
+    if os.path.isdir(autostart_dir):
+        archivos = os.listdir(autostart_dir)
+        if archivos:
+            resultado.append(f"\n🚀 Autostart (~/.config/autostart):\n" + "\n".join(f"  - {a}" for a in archivos))
+        else:
+            resultado.append("\n🚀 Autostart (~/.config/autostart): sin archivos\n")
+    else:
+        resultado.append("\n🚀 Autostart (~/.config/autostart): no existe\n")
+
+    # Servicios del sistema
+    systemd_dir = "/etc/systemd/system/"
+    if os.path.isdir(systemd_dir):
+        servicios = [f for f in os.listdir(systemd_dir) if f.endswith(".service")]
+        resultado.append(f"\n🛠️ Servicios personalizados en systemd ({len(servicios)} detectados):")
+        for s in sorted(servicios)[:10]:  # limitar a 10 primeros
+            resultado.append(f"  - {s}")
+        if len(servicios) > 10:
+            resultado.append("  ... (truncado)")
+    else:
+        resultado.append("\n🛠️ /etc/systemd/system/ no accesible")
+
+    # Init.d scripts
+    initd_dir = "/etc/init.d/"
+    if os.path.isdir(initd_dir):
+        scripts = os.listdir(initd_dir)
+        resultado.append(f"\n🧩 Scripts en /etc/init.d/ ({len(scripts)}):")
+        for s in sorted(scripts)[:10]:  # limitar a 10
+            resultado.append(f"  - {s}")
+        if len(scripts) > 10:
+            resultado.append("  ... (truncado)")
