@@ -104,6 +104,8 @@ Puedes clonar o descargar este proyecto y usarlo directamente con Python:
 ```bash
 git clone https://github.com/cyberiuscompany/PermScope.git
 cd PermScope
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 python perm_scope.py
 ```
@@ -113,6 +115,8 @@ python perm_scope.py
 ```bash
 git clone https://github.com/cyberiuscompany/PermScope.git
 cd PermScope
+python3 -m venv venv
+source venv/bin/activate
 pip install .
 perm_scope --help
 ```
