@@ -120,18 +120,6 @@ source venv/bin/activate
 pip install .
 perm_scope --help
 ```
-### 3. Generar Compilado .exe
-
-```bash
-git clone https://github.com/cyberiuscompany/PermScope.git
-cd PermScope
-python3 -m venv venv
-source venv/bin/activate
-pyinstaller perm_scope.spec
-cd dist
-.\PermScope.exe
-```
-
 
 
 
