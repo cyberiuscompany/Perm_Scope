@@ -45,6 +45,8 @@ exe = EXE(
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=True,  # True para consola, False para modo ventana
-    icon='Icono.ico'
+    console=True,
+    icon='Icono.ico',
+    version='version.txt'  # ← aquí se enlaza
 )
+
