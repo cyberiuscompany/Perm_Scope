@@ -42,27 +42,53 @@ def ejecutar():
             resultado.append(f"[!] Error al obtener tareas programadas: {str(e)}")
 
     elif sistema == "Linux":
-        resultado.append("📅 Tareas programadas en Linux (crontabs):\n")
+        resultado.append("📅 Tareas programadas encontradas en Linux:\n")
+
+        # Crontab del usuario actual
         try:
             crontab_user = subprocess.check_output("crontab -l", shell=True, text=True)
-            resultado.append("🔸 Crontab del usuario actual:\n" + crontab_user)
+            lineas = [l for l in crontab_user.splitlines() if l.strip() and not l.strip().startswith("#")]
+            if lineas:
+                resultado.append("🔸 Crontab del usuario actual:")
+                resultado.extend(f"  - {l}" for l in lineas)
+            else:
+                resultado.append("🔸 Crontab del usuario actual: vacío.")
         except subprocess.CalledProcessError:
-            resultado.append("[i] No hay crontab definido para el usuario actual.")
+            resultado.append("🔸 Crontab del usuario actual: no definido.")
 
+        # /etc/crontab
         try:
             cron_sys = subprocess.check_output("cat /etc/crontab", shell=True, text=True)
-            resultado.append("\n🔸 /etc/crontab:\n" + cron_sys)
+            lineas = [l for l in cron_sys.splitlines() if l.strip() and not l.strip().startswith("#") and not l.startswith("SHELL=")]
+            if lineas:
+                resultado.append("\n🔸 /etc/crontab:")
+                resultado.extend(f"  - {l}" for l in lineas)
+            else:
+                resultado.append("\n🔸 /etc/crontab: sin tareas activas.")
         except Exception as e:
             resultado.append(f"[!] Error al leer /etc/crontab: {str(e)}")
 
+        # Archivos en /etc/cron.d
         try:
-            resultado.append("\n🔸 Archivos en /etc/cron.d:\n")
-            cron_d = subprocess.check_output("ls -l /etc/cron.d", shell=True, text=True)
-            resultado.append(cron_d)
+            archivos = subprocess.check_output("ls /etc/cron.d", shell=True, text=True).splitlines()
+            if archivos:
+                resultado.append("\n🗂️ Archivos en /etc/cron.d:")
+                for archivo in archivos:
+                    ruta = f"/etc/cron.d/{archivo}"
+                    try:
+                        with open(ruta, 'r') as f:
+                            lineas = [l for l in f if l.strip() and not l.strip().startswith("#")]
+                            if lineas:
+                                resultado.append(f"  📄 {archivo}:")
+                                resultado.extend(f"    - {l.strip()}" for l in lineas)
+                    except:
+                        resultado.append(f"  📄 {archivo}: error al leer")
+            else:
+                resultado.append("\n🗂️ /etc/cron.d: sin archivos.")
         except Exception as e:
             resultado.append(f"[!] Error al listar /etc/cron.d: {str(e)}")
 
     else:
-        resultado.append("Sistema operativo no soportado para este módulo.")
+        resultado.append("❌ Sistema operativo no soportado para este módulo.")
 
     return "\n".join(resultado)
