@@ -95,6 +95,13 @@ PermScope es una herramienta híbrida que permite el análisis de configuracione
 
 ---
 
+## 🧩 Requisitos del sistema
+
+- Python 3.8 o superior  
+- Windows 64-bit  o 32-Bits
+
+---
+
 # 🕵️ Uso de PermScope
 
 ```bash
