@@ -130,7 +130,7 @@ pip install -r requirements.txt
 python perm_scope.py
 ```
 
-### 2. Instalación profesional como paquete
+### 2. Instalación como si fuese paquete profesional  
 
 ```bash
 git clone https://github.com/cyberiuscompany/PermScope.git
