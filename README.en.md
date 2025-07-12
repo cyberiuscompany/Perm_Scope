@@ -29,8 +29,6 @@ Local analysis tool for Privilege Escalation and AV/EDR/Firewall Evasion
 
 Compatible with **Windows** and **Linux**. Designed for **pentesters**, sysadmins and cybersecurity enthusiasts.
 
-- DeepWiki: https://deepwiki.com/cyberiuscompany/Perm_Scope
-
 ---
 
 <p align="center">
