@@ -28,8 +28,6 @@ Herramienta de Análisis Local para Escalada de Privilegios y Evasiones de AV/ED
 
 Compatible con **Windows** y **Linux**. Diseñada para **pentesters**, administradores de sistemas y entusiastas de la ciberseguridad.
 
-- DeepWiki de la herramienta: https://deepwiki.com/cyberiuscompany/Perm_Scope
-
 ---
 
 <p align="center">
