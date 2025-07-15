@@ -136,7 +136,7 @@ python perm_scope.py --modo consola --tipo linux
 Puedes clonar o descargar este proyecto y usarlo directamente con Python:
 
 ```bash
-git clone https://github.com/cyberiuscompany/PermScope.git
+git clone https://github.com/cyberiuscompany/Perm_Scope.git
 cd PermScope
 python3 -m venv venv
 source venv/bin/activate
@@ -147,7 +147,7 @@ python perm_scope.py
 ### 2. Instalación como si fuese paquete profesional  
 
 ```bash
-git clone https://github.com/cyberiuscompany/PermScope.git
+git clone https://github.com/cyberiuscompany/Perm_Scope.git
 cd PermScope
 python3 -m venv venv
 source venv/bin/activate
