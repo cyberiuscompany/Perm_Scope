@@ -131,7 +131,7 @@ python perm_scope.py --modo consola --tipo linux
 
 ## ⚙️ Instalación
 
-### 1. Clonar o descargar el repositorio
+### 1.1 Instalación básica con clonado 🪟 Windows
 
 Puedes clonar o descargar este proyecto y usarlo directamente con Python:
 
@@ -144,13 +144,13 @@ pip install -r requirements.txt
 python perm_scope.py
 ```
 
-### 2. Instalación como si fuese paquete profesional  
+### 2. Instalación como si fuese paquete profesional en 🪟 Windows / 🐧 Linux
 
 ```bash
 git clone https://github.com/cyberiuscompany/Perm_Scope.git
 cd Perm_Scope
 python3 -m venv venv
-.\venv\Scripts\activate
+source venv/bin/activate
 pip install .
 perm_scope --help
 ```
