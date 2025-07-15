@@ -139,7 +139,7 @@ Puedes clonar o descargar este proyecto y usarlo directamente con Python:
 git clone https://github.com/cyberiuscompany/Perm_Scope.git
 cd Perm_Scope
 python3 -m venv venv
-source venv/bin/activate
+.\venv\Scripts\activate
 pip install -r requirements.txt
 python perm_scope.py
 ```
@@ -150,7 +150,7 @@ python perm_scope.py
 git clone https://github.com/cyberiuscompany/Perm_Scope.git
 cd Perm_Scope
 python3 -m venv venv
-source venv/bin/activate
+.\venv\Scripts\activate
 pip install .
 perm_scope --help
 ```
