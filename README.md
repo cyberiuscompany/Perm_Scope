@@ -143,12 +143,14 @@ python perm_scope.py
 ```
 ### 1.2 Instalación básica con clonado 🐧 Linux
 
+```bash
 git clone https://github.com/cyberiuscompany/Perm_Scope.git
 cd Perm_Scope
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 python perm_scope.py
+```
 
 ### 2. Instalación como si fuese paquete profesional en 🪟 Windows 
 
