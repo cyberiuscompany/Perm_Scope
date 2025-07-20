@@ -174,7 +174,7 @@ pip install .
 perm_scope --help
 ```
 
-### 3 Generar compilado .exe en en 🪟 Windows
+### 3.0 Generar compilado .exe en 🪟 Windows
 
 ```bash
 git clone https://github.com/cyberiuscompany/Perm_Scope.git
