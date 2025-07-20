@@ -174,6 +174,21 @@ pip install .
 perm_scope --help
 ```
 
+### 3 Generar compilado .exe en en 🪟 Windows
+
+```bash
+git clone https://github.com/cyberiuscompany/Perm_Scope.git
+cd Perm_Scope
+pip install pyinstaller
+pyinstaller perm_scope.spec
+
+# El fichero .exe estaría en :
+
+Perm_Scope/
+├── dist/
+│   └── perm_scope.exe   ← ✔️ AQUÍ está el ejecutable final
+```
+
 
 
 
