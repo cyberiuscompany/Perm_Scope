@@ -129,7 +129,15 @@ python perm_scope.py --modo consola --tipo windows
 python perm_scope.py --modo consola --tipo linux
 ```
 
+
+
 ## ⚙️ Instalación
+
+### 0.0 Usa Rápido de la Realeses
+
+```bash
+Perm_scope_Modulos_Comunes_Windows_x64_x86_Bits.exe --modo consola --tipo comunes
+```
 
 ### 1.1 Instalación básica con clonado 🪟 Windows
 
