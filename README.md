@@ -133,7 +133,7 @@ python perm_scope.py --modo consola --tipo linux
 
 ## ⚙️ Instalación
 
-### 0.0 Usa Rápido de la Realeses
+### 0.0 Usa Rápido de la Realeases
 
 ```bash
 Perm_scope_Modulos_Comunes_Windows_x64_x86_Bits.exe --modo consola --tipo comunes
