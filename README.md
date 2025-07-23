@@ -136,6 +136,7 @@ python perm_scope.py --modo consola --tipo linux
 ### 0.0 Usa Rápido de la Realeases
 
 ```bash
+Perm_scope_Modulos_Comunes_Windows_x64_x86_Bits.exe --modo gui
 Perm_scope_Modulos_Comunes_Windows_x64_x86_Bits.exe --modo consola --tipo comunes
 ```
 
