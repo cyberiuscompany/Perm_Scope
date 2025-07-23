@@ -130,6 +130,13 @@ python perm_scope.py --modo consola --tipo linux
 
 ## ⚙️ Installation
 
+### 0.0 Use Realeases Quickly
+
+```bash
+Perm_scope_Modulos_Comunes_Windows_x64_x86_Bits.exe --modo gui
+Perm_scope_Modulos_Comunes_Windows_x64_x86_Bits.exe --modo consola --tipo comunes
+```
+
 ### 1.1 Basic installation with cloning 🪟 Windows
 
 ```bash
