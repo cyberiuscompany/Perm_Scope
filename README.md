@@ -133,7 +133,7 @@ python perm_scope.py --modo consola --tipo linux
 
 ## ⚙️ Instalación
 
-### 0.0 Uso Rápido de la Releases
+### 0.0 Uso Rápido de la Release
 
 ```bash
 Perm_scope_Modulos_Comunes_Windows_x64_x86_Bits.exe --modo gui
